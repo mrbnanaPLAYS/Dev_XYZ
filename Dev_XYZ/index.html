@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noterom</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1 class="app-title">Noterom</h1>
+    <div class="clock" id="liveClock"></div>
+  </header>
+
+  <main class="app-layout">
+    <section class="panel calendar-panel">
+      <h2>Chandler</h2>
+      <div class="date-picker">
+        <label for="classDate">Pick a date</label>
+        <input type="date" id="classDate" />
+      </div>
+      <button id="addClassButton" class="primary-btn">Add Class</button>
+      <p class="hint">Up to 8 classes can be scheduled.</p>
+      <div class="class-list" id="classList"></div>
+    </section>
+
+    <section class="panel notes-panel">
+      <div class="class-mode" id="classModeStatus">
+        <span class="status-dot"></span>
+        <div>
+          <h2>Class Mode</h2>
+          <p id="classModeText">No class active</p>
+        </div>
+      </div>
+
+      <div class="active-class" id="activeClassDetail">
+        <h3>Active Class</h3>
+        <p>Select a class or wait for the scheduled time.</p>
+      </div>
+
+      <div class="notes-area">
+        <div class="notes-header">
+          <h3>Notes</h3>
+          <button id="saveNotesButton" class="secondary-btn">Save Notes</button>
+        </div>
+        <div
+          id="notesEditor"
+          class="notes-editor"
+          contenteditable="true"
+          aria-label="Class notes editor"
+        ></div>
+        <p class="hint">Notes are stored as rich HTML for each class.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="classModal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Create a Class</h3>
+        <button class="ghost-btn" id="closeModalButton" aria-label="Close">✕</button>
+      </div>
+      <form id="classForm">
+        <label>
+          Class name
+          <input type="text" id="className" placeholder="e.g. Calculus" required />
+        </label>
+        <label>
+          Start time
+          <input type="time" id="startTime" required />
+        </label>
+        <label>
+          End time
+          <input type="time" id="endTime" required />
+        </label>
+        <label>
+          Duration (optional, overrides end time)
+          <input type="time" id="durationTime" step="60" />
+        </label>
+        <button type="submit" class="primary-btn">Save Class</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
